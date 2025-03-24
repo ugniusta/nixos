@@ -1,0 +1,4 @@
+theme = "molokai"
+
+[editor]
+line-number = "relative"
