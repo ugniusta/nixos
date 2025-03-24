@@ -12,7 +12,10 @@
     bat
 
     cowsay
+
     testdisk
+    lshw
+    ventoy-full
 
     lm_sensors
     pciutils
