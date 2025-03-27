@@ -1,5 +1,5 @@
 { config, ... }: {
   imports = [
-    ./steam
+    ./gaming
   ];
 }
