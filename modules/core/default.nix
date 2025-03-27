@@ -42,12 +42,6 @@
   environment.systemPackages = with pkgs; [
   ];
 
-  programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = ["ugnius"];
-  virtualisation.libvirtd.enable = true;
-  virtualisation.spiceUSBRedirection.enable = true;
-  #virtualisation.libvirtd.allowedBridges = ["virbr0"]; # Not sure if this is required
-
   services.xserver.enable = false;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
