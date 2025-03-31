@@ -23,7 +23,7 @@
           ./modules/rust
           ./modules/desktop
           ./hosts/legion-5/configuration.nix
-          ./modules/virtualization
+          # ./modules/virtualization
 
           home-manager.nixosModules.home-manager {
 	          home-manager.useGlobalPkgs = true;

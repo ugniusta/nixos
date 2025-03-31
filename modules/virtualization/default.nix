@@ -5,22 +5,6 @@ let gpuIDs = [
 ];
 in {pkgs, lib, config, ...}: {
 
-  programs.virt-manager.enable = true;
-  users.groups.libvirtd.members = ["ugnius"];
-  virtualisation.libvirtd = {
-    enable = true;
-    qemuOvmf = true;
-    qemuSwtpm = true;
-    qemuOvmfPackage = pkgs.OVMFFull;
-  };
-  virtualisation.spiceUSBRedirection.enable = true;
-  #virtualisation.libvirtd.allowedBridges = ["virbr0"]; # Not sure if this is requiredo
-
-  environment.systemPackage = with pkgs; [
-    virtio-win
-  ];
-
-
   config = let cfg = config.vfio;
   in {
     boot = {
@@ -41,6 +25,22 @@ in {pkgs, lib, config, ...}: {
         ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
       ];
     };
+
+
+    programs.virt-manager.enable = true;
+    users.groups.libvirtd.members = ["ugnius"];
+    virtualisation.libvirtd = {
+      enable = true;
+      qemuOvmf = true;
+      qemuSwtpm = true;
+    };
+    virtualisation.spiceUSBRedirection.enable = true;
+    #virtualisation.libvirtd.allowedBridges = ["virbr0"]; # Not sure if this is requiredo
+
+    environment.systemPackages = with pkgs; [
+      virtio-win
+    ];
+
 
   };
 }
