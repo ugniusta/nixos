@@ -19,10 +19,10 @@
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
-	        ./modules/core
-          ./modules/rust
-          ./modules/desktop
           ./hosts/legion-5/configuration.nix
+	        ./modules/core
+          ./modules/desktop
+          ./modules/development
           # ./modules/virtualization
 
           home-manager.nixosModules.home-manager {

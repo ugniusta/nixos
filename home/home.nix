@@ -31,7 +31,7 @@
 
   programs.git = {
     enable = true;
-    userName = "sta-u";
+    userName = "staugi";
     userEmail = "ugnius@dev.stasaitis.me";
   };
 

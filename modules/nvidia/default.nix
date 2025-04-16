@@ -37,8 +37,8 @@
 
   hardware.nvidia.prime = {
      offload = {
-		 	enable = true;
-		 	enableOffloadCmd = true;
+		 	enable = false;
+		 	enableOffloadCmd = false;
 		 };
 
     #sync.enable = true;

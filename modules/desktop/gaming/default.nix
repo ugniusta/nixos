@@ -10,4 +10,5 @@
     gamemode
     lutris
   ];
+  programs.kdeconnect.enable = true;
 }
