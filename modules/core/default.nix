@@ -23,8 +23,12 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-
   };
+
+  # hardware.pulseaudio = {
+  #   enable = true;
+  #   support32Bit = true;
+  # };
 
   users.users.ugnius = {
      isNormalUser = true;

@@ -25,6 +25,7 @@
     beeper
     libreoffice-qt6-fresh
     vlc
+    qbittorrent
 
     inputs.zen-browser.packages.${system}.beta
   ];
