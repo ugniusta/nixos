@@ -25,7 +25,7 @@
     # supported GPUs is at: 
     # https://github.com/NVIDIA/open-gpu-kernel-modules#compatible-gpus 
     # Only available from driver 515.43.04+
-    open = true;
+    open = false;
 
     # Enable the Nvidia settings menu,
 	  # accessible via `nvidia-settings`.
@@ -41,7 +41,7 @@
 		 	enableOffloadCmd = true;
 		 };
 
-    #sync.enable = true;
+    # sync.enable = true;
 
 		intelBusId = "PCI:0:2:0";
 		nvidiaBusId = "PCI:1:0:0";

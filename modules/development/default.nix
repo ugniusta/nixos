@@ -4,4 +4,6 @@
     bacon
     fx
   ];
+
+  hardware.saleae-logic.enable = true;
 }

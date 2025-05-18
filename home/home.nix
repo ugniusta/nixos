@@ -8,6 +8,7 @@
     helix
     vscodium
     tmux
+    saleae-logic-2
 
     bat
 
@@ -26,6 +27,8 @@
     libreoffice-qt6-fresh
     vlc
     qbittorrent
+    gimp
+    drawio
 
     inputs.zen-browser.packages.${system}.beta
   ];
