@@ -11,13 +11,14 @@
       url = "github:NikSneMC/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    fenix = {
+      url = "github:nix-community/fenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, rust-overlay, ... } @ inputs: {
+  outputs = { nixpkgs, home-manager, zen-browser, fenix, ... } @ inputs: {
+    packages.x86_64-linux.default = fenix.packages.x86_64-linux.stable.toolchain;
     nixosConfigurations = {
       Legion-5 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -36,9 +37,18 @@
             home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux"; };
 	        }
 
-          ({ pkgs, ... }: {
-            nixpkgs.overlays = [ rust-overlay.overlays.default ];
-            environment.systemPackages = [ pkgs.rust-bin.stable.latest.default ];
+          ({ pkgs, ...}: {
+            nixpkgs.overlays = [ fenix.overlays.default ];
+            environment.systemPackages = with pkgs; [
+            #   (fenix.stable.withComponents [
+            #     "cargo"
+            #     "clippy"
+            #     "rust-src"
+            #     "rustc"
+            #     "rustfmt"
+            #   ])
+              rust-analyzer-nightly
+            ];
           })
         ];
       };
