@@ -14,10 +14,10 @@
 
     cowsay
 
-    testdisk
-    lshw
     ventoy-full
+    testdisk
 
+    lshw
     lm_sensors
     pciutils
     usbutils

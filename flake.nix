@@ -17,8 +17,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, fenix, ... } @ inputs: {
-    packages.x86_64-linux.default = fenix.packages.x86_64-linux.stable.toolchain;
+  outputs = { nixpkgs, home-manager, zen-browser, ... } @ inputs: {
     nixosConfigurations = {
       Legion-5 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -36,21 +35,8 @@
 	          home-manager.users.ugnius = import ./home/home.nix;
             home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux"; };
 	        }
-
-          ({ pkgs, ...}: {
-            nixpkgs.overlays = [ fenix.overlays.default ];
-            environment.systemPackages = with pkgs; [
-            #   (fenix.stable.withComponents [
-            #     "cargo"
-            #     "clippy"
-            #     "rust-src"
-            #     "rustc"
-            #     "rustfmt"
-            #   ])
-              rust-analyzer-nightly
-            ];
-          })
         ];
+
       };
     };
   };

@@ -25,11 +25,6 @@
     pulse.enable = true;
   };
 
-  # hardware.pulseaudio = {
-  #   enable = true;
-  #   support32Bit = true;
-  # };
-
   users.users.ugnius = {
      isNormalUser = true;
      description = "Ugnius Stašaitis";
