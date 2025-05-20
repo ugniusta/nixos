@@ -22,7 +22,7 @@
     pciutils
     usbutils
 
-    signal-desktop
+    signal-desktop-bin
     beeper
     libreoffice-qt6-fresh
     vlc
@@ -56,10 +56,6 @@
     };
     ".config/helix/config.toml" = {
       source = ../config/helix/config.toml;
-      force = true;
-    };
-    ".config/helix/languages.toml" = {
-      source = ../config/helix/languages.toml;
       force = true;
     };
     ".config/nushell/config.nu" = {
