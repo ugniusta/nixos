@@ -58,6 +58,10 @@
       source = ../config/helix/config.toml;
       force = true;
     };
+    ".config/helix/languages.toml" = {
+      source = ../config/helix/languages.toml;
+      force = true;
+    };
     ".config/nushell/config.nu" = {
       source = ../config/nushell/config.nu;
       force = true;
