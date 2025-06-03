@@ -67,6 +67,10 @@
       source = ../config/zellij/config.kdl;
       force = true;
     };
+    ".config/starship.toml" = {
+      source = ../config/starship/starship.toml;
+      force = true;
+    };
   };
 
   home.stateVersion = "25.05";
