@@ -11,6 +11,7 @@
     saleae-logic-2
 
     bat
+    zellij
 
     cowsay
 
@@ -60,6 +61,10 @@
     };
     ".config/nushell/config.nu" = {
       source = ../config/nushell/config.nu;
+      force = true;
+    };
+    ".config/zellij/config.kdl" = {
+      source = ../config/zellij/config.kdl;
       force = true;
     };
   };
