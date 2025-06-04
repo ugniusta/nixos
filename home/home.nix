@@ -7,11 +7,17 @@
     nushell
     helix
     vscodium
-    tmux
     saleae-logic-2
 
     bat
     zellij
+    ripgrep
+    fd
+    gitui
+    yazi
+    hyperfine
+    mprocs
+    btop
 
     cowsay
 
