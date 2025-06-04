@@ -38,6 +38,10 @@
     drawio
 
     inputs.zen-browser.packages.${system}.beta
+
+
+
+    anki-bin
   ];
 
   programs.git = {
