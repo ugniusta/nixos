@@ -8,37 +8,63 @@ in {pkgs, lib, config, ...}: {
   config = let cfg = config.vfio;
   in {
     boot = {
-      initrd.kernelModules = [
+      extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
+      kernelModules = [
         "vfio_pci"
         "vfio"
         "vfio_iommu_type1"
-        #"vfio_virqfd"
 
         "nvidia"
         "nvidia_modeset"
         "nvidia_uvm"
         "nvidia_drm"
+
+        "kvmfr"
       ];
 
       kernelParams = [
         "intel_iommu=on"
         ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
       ];
+
+      extraModprobeConfig = ''
+        options kvmfr static_size_mb=64
+      '';
     };
 
+    systemd.services.kvmfrPermissions = {
+      enable = true;
+      wantedBy = ["default.target"];
+      wants = ["modprobe@kvmfr.service"];
+      script = ''
+        chown ugnius:kvm /dev/kvmfr0
+        chmod g+rw /dev/kvmfr0
+      '';
+    };
 
     programs.virt-manager.enable = true;
     users.groups.libvirtd.members = ["ugnius"];
     virtualisation.libvirtd = {
       enable = true;
-      qemuOvmf = true;
-      qemuSwtpm = true;
+      qemu.ovmf.enable = true;
+      qemu.swtpm.enable = true;
+      qemu.verbatimConfig = ''
+        cgroup_device_acl = [
+          "/dev/null", "/dev/full", "/dev/zero",
+          "/dev/random", "/dev/urandom",
+          "/dev/ptmx", "/dev/kvm",
+          "/dev/userfaultfd",
+          "/dev/kvmfr0"
+        ]
+      '';
     };
     virtualisation.spiceUSBRedirection.enable = true;
-    #virtualisation.libvirtd.allowedBridges = ["virbr0"]; # Not sure if this is requiredo
+    virtualisation.libvirtd.allowedBridges = ["virbr0"];
 
     environment.systemPackages = with pkgs; [
       virtio-win
+      looking-glass-client
+      linuxKernel.packages.linux_6_15.kvmfr
     ];
 
 

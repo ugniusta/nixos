@@ -21,13 +21,13 @@
 
     cowsay
 
-    ventoy-full
     testdisk
 
     lshw
     lm_sensors
     pciutils
     usbutils
+    remmina
 
     signal-desktop-bin
     beeper
@@ -36,6 +36,7 @@
     qbittorrent
     gimp
     drawio
+    obs-studio
 
     inputs.zen-browser.packages.${system}.beta
 

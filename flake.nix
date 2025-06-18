@@ -27,7 +27,7 @@
 	        ./modules/core
           ./modules/desktop
           ./modules/development
-          # ./modules/virtualization
+          ./modules/virtualization
 
           home-manager.nixosModules.home-manager {
 	          home-manager.useGlobalPkgs = true;
