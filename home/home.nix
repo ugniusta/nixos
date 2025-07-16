@@ -80,10 +80,10 @@
       source = ../config/starship/starship.toml;
       force = true;
     };
-    # ".config/fish/config.fish" = {
-    #   source = ../config/fish/fish.config;
-    #   force = true;
-    # };
+    ".config/fish/config.fish" = {
+      source = ../config/fish/config.fish;
+      force = true;
+    };
   };
 
   home.stateVersion = "25.05";
