@@ -1,5 +1,6 @@
-command = nu
 theme = Monokai Soda
 mouse-hide-while-typing
 window-decoration = none
 app-notifications = no-clipboard-copy
+shell-integration = none
+command = zellij
