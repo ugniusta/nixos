@@ -9,6 +9,7 @@
     helix
     vscodium
     saleae-logic-2
+    zoxide
 
     bat
     zellij
@@ -77,6 +78,10 @@
     };
     ".config/starship.toml" = {
       source = ../config/starship/starship.toml;
+      force = true;
+    };
+    ".config/fish/config.fish" = {
+      source = ../config/fish/fish.config;
       force = true;
     };
   };
