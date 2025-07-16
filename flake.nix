@@ -11,10 +11,6 @@
       url = "github:NikSneMC/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    fenix = {
-      url = "github:nix-community/fenix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { nixpkgs, home-manager, zen-browser, ... } @ inputs: {

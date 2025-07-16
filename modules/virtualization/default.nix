@@ -10,21 +10,21 @@ in {pkgs, lib, config, ...}: {
     boot = {
       extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
       kernelModules = [
-        "vfio_pci"
-        "vfio"
-        "vfio_iommu_type1"
-
         "nvidia"
         "nvidia_modeset"
         "nvidia_uvm"
         "nvidia_drm"
+
+        # "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
 
         "kvmfr"
       ];
 
       kernelParams = [
         "intel_iommu=on"
-        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      #   ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
       ];
 
       extraModprobeConfig = ''
@@ -67,6 +67,9 @@ in {pkgs, lib, config, ...}: {
       linuxKernel.packages.linux_6_15.kvmfr
     ];
 
-
+    fileSystems."/mnt/Win11VM" = {
+      device = "/dev/disk/by-uuid/a09b771f-8f8c-487f-922f-2bf85a95374e";
+      fsType = "ext4";
+    };
   };
 }

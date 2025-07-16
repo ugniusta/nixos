@@ -5,6 +5,7 @@
   home.packages = with pkgs; [
     ghostty
     nushell
+    fish
     helix
     vscodium
     saleae-logic-2
@@ -18,6 +19,7 @@
     hyperfine
     mprocs
     btop
+    zoxide
 
     cowsay
 
@@ -42,6 +44,7 @@
 
 
 
+    bazecor
     anki-bin
   ];
 
