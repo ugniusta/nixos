@@ -10,22 +10,22 @@ in {pkgs, lib, config, ...}: {
     boot = {
       extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
       kernelModules = [
-        "nvidia"
-        "nvidia_modeset"
-        "nvidia_uvm"
-        "nvidia_drm"
+        # "nvidia"
+        # "nvidia_modeset"
+        # "nvidia_uvm"
+        # "nvidia_drm"
 
         # "vfio_pci"
-        "vfio"
-        "vfio_iommu_type1"
+        # "vfio"
+        # "vfio_iommu_type1"
 
         "kvmfr"
       ];
 
-      kernelParams = [
-        "intel_iommu=on"
-      #   ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
-      ];
+      # kernelParams = [
+        # "intel_iommu=on"
+        # ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      # ];
 
       extraModprobeConfig = ''
         options kvmfr static_size_mb=64

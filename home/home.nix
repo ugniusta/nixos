@@ -3,6 +3,8 @@
   home.homeDirectory = "/home/ugnius";
 
   home.packages = with pkgs; [
+    starsector
+    
     ghostty
     nushell
     fish

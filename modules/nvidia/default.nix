@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
 
+  nixpkgs.config.nvidia.acceptLicense = true;
+
   hardware.graphics = {
     enable = true;
   };
@@ -32,7 +34,7 @@
     nvidiaSettings = true;
 
     # Optionally, you may need to select the appropriate driver version for your specific GPU.
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
   };
 
   hardware.nvidia.prime = {

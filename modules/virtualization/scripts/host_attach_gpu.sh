@@ -4,7 +4,7 @@ sudo virsh nodedev-reattach pci_0000_01_00_1
 sudo virsh nodedev-reattach pci_0000_01_00_0
 echo attached
 
-sudo modprobe -r vfio-pci --first-time
+# sudo modprobe -r vfio-pci --first-time
 
 sudo modprobe nvidia_drm --first-time
 sudo modprobe nvidia_modest --first-time
