@@ -41,6 +41,7 @@
         modules = [
           ./hosts/nasys/configuration.nix
         ];
+      };
     };
   };
 }

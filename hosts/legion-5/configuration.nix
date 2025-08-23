@@ -12,4 +12,13 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [ lenovo-legion-module ];
 
   networking.hostName = "Legion-5";
+
+  users.users.ugnius = {
+     isNormalUser = true;
+     description = "Ugnius Stašaitis";
+     extraGroups = [ "networkmanager" "wheel" "dialout" ];
+     packages = with pkgs; [
+       kdePackages.kate
+     ];
+  };
 }

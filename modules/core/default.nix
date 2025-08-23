@@ -15,43 +15,10 @@
     variant = "";
   };
 
-  services.printing.enable = true;
-
-  hardware.bluetooth.enable = true;
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    pulse.enable = true;
-  };
-
-  users.users.ugnius = {
-     isNormalUser = true;
-     description = "Ugnius Stašaitis";
-     extraGroups = [ "networkmanager" "wheel" "dialout" ];
-     packages = with pkgs; [
-       kdePackages.kate
-     ];
-  };
-
-  programs.firefox.enable = true;
-
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
   ];
 
-  services.xserver.enable = false;
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-  
-  programs.nix-ld.enable = true;
-
-  programs.nix-ld.libraries = with pkgs; [
-    # Add any missing dynamic libraries for unpackaged programs
-    # here, NOT in environment.systemPackages
-  ];
 }
