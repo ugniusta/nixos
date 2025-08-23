@@ -40,6 +40,7 @@
         system = "x86_64-linux";
         modules = [
           ./hosts/nasys/configuration.nix
+          ./modules/core
         ];
       };
     };
