@@ -41,6 +41,7 @@
         modules = [
           ./hosts/nasys/configuration.nix
           ./modules/core
+          ./modules/server/zfs
         ];
       };
     };

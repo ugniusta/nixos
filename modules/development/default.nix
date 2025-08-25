@@ -4,6 +4,7 @@
     bacon
     fx
     rust-analyzer
+    nixd
     rustup
   ];
 
