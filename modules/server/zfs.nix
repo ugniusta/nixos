@@ -4,7 +4,10 @@
     "zfs"
   ];
   boot.zfs.forceImportRoot = false;
+  boot.zfs.devNodes = "/dev/disk/by-id";
   networking.hostId = "ee696dc2";
+
+
 
   systemd.tmpfiles.settings = {
     "nas_mount_dir" = {
