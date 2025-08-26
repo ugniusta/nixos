@@ -24,4 +24,5 @@
      description = "NAS";
      extraGroups = [ "wheel" ];
   };
+  nix.settings.trusted-users = [ "nasys" ];
 }

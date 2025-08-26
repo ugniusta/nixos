@@ -4,7 +4,8 @@
     "zfs"
   ];
   boot.zfs.forceImportRoot = false;
-  boot.zfs.devNodes = "/dev/disk/by-id";
+  # boot.zfs.devNodes = "/dev/disk/by-id";
+  boot.zfs.extraPools = ["nas"];
   networking.hostId = "ee696dc2";
 
 
