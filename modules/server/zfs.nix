@@ -1,4 +1,4 @@
-{ pkgs, lib, ...}: {
+{ ... }: {
   
   boot.supportedFilesystems = [
     "zfs"
@@ -8,9 +8,7 @@
   boot.zfs.extraPools = ["nas"];
   networking.hostId = "ee696dc2";
 
-
-
-  systemd.tmpfiles.settings = {
+ systemd.tmpfiles.settings = {
     "nas_mount_dir" = {
       "/mnt/nas" = {
         d = {
