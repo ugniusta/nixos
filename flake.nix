@@ -13,7 +13,7 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, zen-browser, ... } @ inputs: {
+  outputs = { nixpkgs, home-manager, ... } @ inputs: {
     nixosConfigurations = {
       Legion-5 = nixpkgs.lib.nixosSystem {
         specialArgs = {inherit inputs;};
@@ -42,6 +42,7 @@
           ./hosts/nasys/configuration.nix
           ./modules/core
           ./modules/server/zfs.nix
+          # ./modules/server/wireguard.nix
         ];
       };
     };

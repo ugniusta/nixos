@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, ... }: {
+{ inputs,  pkgs, ... }: {
   home.username = "ugnius";
   home.homeDirectory = "/home/ugnius";
 
@@ -44,8 +44,7 @@
     obs-studio
 
     inputs.zen-browser.packages.${system}.beta
-
-
+    wireguard-tools 
 
     bazecor
     anki-bin
