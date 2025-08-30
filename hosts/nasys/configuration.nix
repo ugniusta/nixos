@@ -20,9 +20,9 @@ in { config, pkgs, ... }: {
     };
   };
 
-  users.users.${username} = {
+  users.users."${username}" = {
      isNormalUser = true;
-     description = "Main NAS user";
+     description = "Main NAS user TEST 3";
      extraGroups = [ "wheel" ];
      openssh.authorizedKeys.keyFiles = [ "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub" ]; # TODO: Path var
   };
