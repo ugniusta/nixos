@@ -22,7 +22,7 @@ in { config, pkgs, ... }: {
 
   users.users."${username}" = {
      isNormalUser = true;
-     description = "Main NAS user TEST 3";
+     description = "Nas main user";
      extraGroups = [ "wheel" ];
      openssh.authorizedKeys.keyFiles = [ "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub" ]; # TODO: Path var
   };
