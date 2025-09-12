@@ -50,7 +50,7 @@
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
-          ./hosts/nasys/configuration.nix
+          ./hosts/linas/configuration.nix
         ];
       };
     };
