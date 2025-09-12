@@ -35,6 +35,11 @@ in
      ];
   };
 
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   services.printing.enable = true;
 
   security.rtkit.enable = true;
