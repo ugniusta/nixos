@@ -8,8 +8,6 @@ in { config, pkgs, ... }: {
     ./hardware-configuration.nix
   ];
 
-  boot.kernelPackages = pkgs.linuxPackages_6_12_hardened;
-
   networking.hostName = "Nasys";
 
   services.openssh = {
