@@ -31,7 +31,7 @@ in
      packages = with pkgs; [
        lutris
        heroic
-       libreoffice-bin
+       libreoffice-qt-fresh
      ];
   };
 
