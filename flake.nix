@@ -45,6 +45,14 @@
           # ./modules/server/wireguard.nix
         ];
       };
+
+      Linas = nixpkgs.lib.nixosSystem {
+        specialArgs = {inherit inputs;};
+        system = "x86_64-linux";
+        modules = [
+          ./hosts/nasys/configuration.nix
+        ];
+      };
     };
   };
 }

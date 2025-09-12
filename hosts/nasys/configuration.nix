@@ -1,5 +1,9 @@
 let username = "nasys";
 in { config, pkgs, ... }: {
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   imports = [
     ./hardware-configuration.nix
   ];
@@ -21,10 +25,13 @@ in { config, pkgs, ... }: {
   };
 
   users.users."${username}" = {
-     isNormalUser = true;
-     description = "Nas main user";
-     extraGroups = [ "wheel" ];
-     openssh.authorizedKeys.keyFiles = [ "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub" ]; # TODO: Path var
+    isNormalUser = true;
+    description = "Nas main user";
+    extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keyFiles = [
+      "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub"
+      "/etc/nixos/secrets/${username}/ssh/s24u_nasys@Nasys.pub"
+    ]; # TODO: Path var
   };
   nix.settings.trusted-users = [ "${username}" ];
 }

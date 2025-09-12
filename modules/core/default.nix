@@ -1,8 +1,5 @@
 { config, pkgs, inputs, ... }: {
   system.stateVersion = "25.05";
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Vilnius";
@@ -10,9 +7,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    layout = "lt";
+    variant = "us";
   };
+
+  console.keyMap = "lt.baltic";
 
   nixpkgs.config.allowUnfree = true;
 
