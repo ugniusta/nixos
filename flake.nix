@@ -50,6 +50,7 @@
         specialArgs = {inherit inputs;};
         system = "x86_64-linux";
         modules = [
+          ./modules/core
           ./hosts/linas/configuration.nix
         ];
       };
