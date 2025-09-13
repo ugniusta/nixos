@@ -47,6 +47,8 @@ in
     enable32Bit = true;
   };
 
+  boot.kernelParams = [ "radeon.cik_support=0" "amdgpu.cik_support=1" ];
+
   services.printing.enable = true;
 
   security.rtkit.enable = true;
