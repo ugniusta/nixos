@@ -17,10 +17,9 @@ in
     ports = [ 22 ];
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = [ "${username}" ];
       UseDns = true;
       X11Forwarding = false;
-      PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
 
@@ -33,9 +32,13 @@ in
        heroic
        libreoffice-qt-fresh
      ];
+  };
+
+  users.users.root = {
+    isSystemUser = true;
     openssh.authorizedKeys.keyFiles = [
-      "/etc/nixos/secrets/${username}/ssh/legion-5_linas@Linas.pub"
-      "/etc/nixos/secrets/${username}/ssh/s24u_linas@Linas.pub"
+      "/etc/nixos/secrets/${username}/ssh/legion-5_root@Linas.pub"
+      "/etc/nixos/secrets/${username}/ssh/s24u_root@Linas.pub"
     ];
   };
 
