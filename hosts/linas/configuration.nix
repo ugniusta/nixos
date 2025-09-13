@@ -49,6 +49,9 @@ in
 
   boot.kernelParams = [ "radeon.cik_support=0" "amdgpu.cik_support=1" ];
 
+  hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
+  hardware.graphics.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+
   services.printing.enable = true;
 
   security.rtkit.enable = true;
