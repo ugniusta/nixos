@@ -5,6 +5,7 @@
   ];
 
   services.printing.enable = true;
+  services.printing.drivers = with pkgs; [ foo2zjs ];
 
   hardware.bluetooth.enable = true;
   security.rtkit.enable = true;
@@ -20,7 +21,7 @@
   services.xserver.enable = false;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  
+
   programs.nix-ld.enable = true;
 
   programs.nix-ld.libraries = with pkgs; [

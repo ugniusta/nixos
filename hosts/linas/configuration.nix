@@ -33,6 +33,9 @@ in
        heroic
        libreoffice-qt-fresh
      ];
+    openssh.authorizedKeys.keyFiles = [
+      "/etc/nixos/secrets/${username}/ssh/legion-5_linas@Linas.pub"
+    ];
   };
 
   hardware.graphics = {
