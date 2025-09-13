@@ -35,6 +35,7 @@ in
      ];
     openssh.authorizedKeys.keyFiles = [
       "/etc/nixos/secrets/${username}/ssh/legion-5_linas@Linas.pub"
+      "/etc/nixos/secrets/${username}/ssh/s24_linas@Linas.pub"
     ];
   };
 
