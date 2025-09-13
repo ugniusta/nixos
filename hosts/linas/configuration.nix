@@ -17,7 +17,7 @@ in
     ports = [ 22 ];
     settings = {
       PasswordAuthentication = false;
-      # AllowUsers = [ "${username}" ];
+      AllowUsers = [ "${username}" ];
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "yes"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
