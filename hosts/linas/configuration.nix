@@ -47,10 +47,12 @@ in
     enable32Bit = true;
   };
 
-  boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
+  # boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
+  boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" ];
+  # boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
 
-  hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
-  hardware.graphics.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
+  # hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
+  # hardware.graphics.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
 
   services.printing.enable = true;
 
