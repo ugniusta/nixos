@@ -1,11 +1,14 @@
 let username = "nasys";
-in { config, pkgs, ... }: {
+in { inputs, flakeDir, pkgs, ... }: {
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   imports = [
-    ./hardware-configuration.nix
+    "${flakeDir}/hosts/nasys/hardware-configuration.nix"
+    "${flakeDir}/modules/core"
+    "${flakeDir}/modules/server/zfs.nix"
+    "${flakeDir}/modules/server/wireguard.nix"
   ];
 
   networking.hostName = "Nasys";
@@ -29,7 +32,21 @@ in { config, pkgs, ... }: {
     openssh.authorizedKeys.keyFiles = [
       "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub"
       "/etc/nixos/secrets/${username}/ssh/s24u_nasys@Nasys.pub"
-    ]; # TODO: Path var
+    ];
   };
   nix.settings.trusted-users = [ "${username}" ];
+
+  services.fail2ban = {
+    enable = true;
+   # Ban IP after 5 failures
+    maxretry = 10;
+    ignoreIP = [ ];
+    bantime = "24h"; # Ban IPs for one day on the first ban
+    bantime-increment = {
+      enable = true; # Enable increment of bantime after each violation
+      multipliers = "1 2 4 8 16 32 64";
+      maxtime = "168h"; # Do not ban for more than 1 week
+      overalljails = true; # Calculate the bantime based on all the violations
+    };
+  };
 }

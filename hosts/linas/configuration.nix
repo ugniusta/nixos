@@ -1,6 +1,6 @@
 let username = "linas";
 in
-{ config, pkgs, ... }: {
+{ config, flakeDir, pkgs, ... }: {
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -8,6 +8,7 @@ in
 
   imports = [
     ./hardware-configuration.nix
+    ./${flakeDir}/modules/core
   ];
 
   networking.hostName = "Linas";

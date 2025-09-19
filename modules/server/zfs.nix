@@ -5,7 +5,7 @@
   ];
   boot.zfs.forceImportRoot = false;
   # boot.zfs.devNodes = "/dev/disk/by-id";
-  boot.zfs.extraPools = ["nas"];
+  boot.zfs.extraPools = [ "nas" ];
   networking.hostId = "ee696dc2";
 
  systemd.tmpfiles.settings = {

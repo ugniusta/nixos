@@ -13,44 +13,29 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... } @ inputs: {
+  outputs = { nixpkgs, ... } @ inputs: {
     nixosConfigurations = {
       Legion-5 = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs; flakeDir = inputs.self; };
         system = "x86_64-linux";
         modules = [
           ./hosts/legion-5/configuration.nix
-	        ./modules/core
-          ./modules/desktop
-          ./modules/development
-          ./modules/virtualization
 
-          home-manager.nixosModules.home-manager {
-	          home-manager.useGlobalPkgs = true;
-	          home-manager.useUserPackages = true;
-	          home-manager.users.ugnius = import ./home/home.nix;
-            home-manager.extraSpecialArgs = { inherit inputs; system = "x86_64-linux"; };
-	        }
         ];
-
       };
 
       Nasys = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs; flakeDir = inputs.self; };
         system = "x86_64-linux";
         modules = [
           ./hosts/nasys/configuration.nix
-          ./modules/core
-          ./modules/server/zfs.nix
-          # ./modules/server/wireguard.nix
         ];
       };
 
       Linas = nixpkgs.lib.nixosSystem {
-        specialArgs = {inherit inputs;};
+        specialArgs = {inherit inputs; flakeDir = inputs.self; };
         system = "x86_64-linux";
         modules = [
-          ./modules/core
           ./hosts/linas/configuration.nix
         ];
       };

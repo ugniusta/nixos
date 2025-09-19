@@ -8,31 +8,25 @@
 
   networking.wireguard.interfaces = {
     wg0 = {
-      ips = [ "10.100.0.1/24" ];
+      ips = [ "10.10.0.1/16" ];
 
       listenPort = 51820;
 
-      postSetup = ''
-        ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
-      '';
+      # postSetup = ''
+      #   ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+      # '';
 
-      postShutdown = ''
-        ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
-      '';
+      # postShutdown = ''
+      #   ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
+      # '';
 
      privateKeyFile = "/etc/nixos/secrets/nasys/wireguard/private.key";
 
       peers = [
-        # Aidas Pečeliūnas
+        # S24U
         {
-          publicKey = "{client public key}";
-          # List of IPs assigned to this peer within the tunnel subnet. Used to configure routing.
-          allowedIPs = [ "10.100.0.2/32" ];
-        }
-        # Ugnius Stašaitis
-        {
-          publicKey = "{john doe's public key}";
-          allowedIPs = [ "10.100.0.3/32" ];
+          publicKey = "yeAuEniGUGZMwGY/vlKYkFV40DF+qcyb2EEcejl62ng=";
+          allowedIPs = [ "10.10.0.2/32" ];
         }
       ];
     };
