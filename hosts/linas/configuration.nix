@@ -8,7 +8,7 @@ in
 
   imports = [
     ./hardware-configuration.nix
-    ./${flakeDir}/modules/core
+    "${flakeDir}/modules/core"
   ];
 
   networking.hostName = "Linas";
@@ -33,6 +33,7 @@ in
        heroic
        libreoffice-qt-fresh
        git
+       vlc
      ];
   };
 

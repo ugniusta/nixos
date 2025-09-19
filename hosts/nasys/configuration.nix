@@ -39,8 +39,8 @@ in { inputs, flakeDir, pkgs, ... }: {
   services.fail2ban = {
     enable = true;
    # Ban IP after 5 failures
-    maxretry = 10;
-    ignoreIP = [ ];
+    maxretry = 5;
+    ignoreIP = [ "10.0.0.0/8" "192.168.0.0/16" ];
     bantime = "24h"; # Ban IPs for one day on the first ban
     bantime-increment = {
       enable = true; # Enable increment of bantime after each violation
