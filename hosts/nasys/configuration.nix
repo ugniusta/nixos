@@ -9,6 +9,7 @@ in { inputs, flakeDir, pkgs, ... }: {
     "${flakeDir}/modules/core"
     "${flakeDir}/modules/server/zfs.nix"
     "${flakeDir}/modules/server/wireguard.nix"
+    "${flakeDir}/modules/server/samba.nix"
   ];
 
   networking.hostName = "Nasys";

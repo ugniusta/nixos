@@ -26,7 +26,7 @@
         # S24U
         {
           publicKey = "yeAuEniGUGZMwGY/vlKYkFV40DF+qcyb2EEcejl62ng=";
-          allowedIPs = [ "10.10.0.2/32" ];
+          allowedIPs = [ "10.10.0.2/32" "10.10.0.1/32" ];
         }
       ];
     };
