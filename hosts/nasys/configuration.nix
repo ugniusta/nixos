@@ -1,5 +1,13 @@
-let username = "nasys";
-in { inputs, flakeDir, pkgs, ... }: {
+let
+  username = "nasys";
+in
+{
+  inputs,
+  flakeDir,
+  pkgs,
+  ...
+}:
+{
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -30,6 +38,7 @@ in { inputs, flakeDir, pkgs, ... }: {
     isNormalUser = true;
     description = "Nas main user";
     extraGroups = [ "wheel" ];
+    shell = pkgs.fish;
     openssh.authorizedKeys.keyFiles = [
       "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub"
       "/etc/nixos/secrets/${username}/ssh/s24u_nasys@Nasys.pub"
@@ -39,9 +48,12 @@ in { inputs, flakeDir, pkgs, ... }: {
 
   services.fail2ban = {
     enable = true;
-   # Ban IP after 5 failures
+    # Ban IP after 5 failures
     maxretry = 5;
-    ignoreIP = [ "10.0.0.0/8" "192.168.0.0/16" ];
+    ignoreIP = [
+      "10.0.0.0/8"
+      "192.168.0.0/16"
+    ];
     bantime = "24h"; # Ban IPs for one day on the first ban
     bantime-increment = {
       enable = true; # Enable increment of bantime after each violation

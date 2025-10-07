@@ -5,6 +5,7 @@
     fx
     rust-analyzer
     nixd
+    nixfmt
   ];
 
   hardware.saleae-logic.enable = true;

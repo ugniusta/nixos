@@ -26,7 +26,12 @@
         # S24U
         {
           publicKey = "yeAuEniGUGZMwGY/vlKYkFV40DF+qcyb2EEcejl62ng=";
-          allowedIPs = [ "10.10.0.2/32" "10.10.0.1/32" ];
+          allowedIPs = [ "10.10.0.2/32" ];
+        }
+        # Gunda PC
+        {
+          publicKey = "dEN7KtZqhkOw9jtmwMu7iDixYthcBZ0HqN+UILqNvFo=";
+          allowedIPs = [ "10.10.0.3/32" ];
         }
       ];
     };

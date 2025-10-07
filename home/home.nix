@@ -7,7 +7,6 @@
     
     ghostty
     nushell
-    fish
     helix
     vscodium
     saleae-logic-2
@@ -52,7 +51,7 @@
 
   programs.git = {
     enable = true;
-    userName = "staugi";
+    userName = "ugniusta";
     userEmail = "ugnius@dev.stasaitis.me";
   };
 
