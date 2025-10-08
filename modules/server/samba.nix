@@ -16,7 +16,6 @@
 
   services.samba = {
     enable = true;
-    securityType = "user";
     openFirewall = true;
     settings = {
       global = {
@@ -27,7 +26,7 @@
         # "use sendfile" = "yes";
         # "max protocol" = "smb2";
         # note: localhost is the ipv6 localhost ::1
-        "hosts allow" = "10.10.0.0/24 127.0.0.1 localhost";
+        "hosts allow" = "10.11.0.0/16 10.12.0.0/16 127.0.0.1 localhost";
         "hosts deny" = "0.0.0.0/0";
         "guest account" = "nobody";
         "map to guest" = "bad user";

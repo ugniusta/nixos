@@ -48,8 +48,25 @@
       "wheel"
       "dialout"
     ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
+  };
+
+  networking.firewall = {
+    allowedUDPPorts = [ 51820 ];
+  };
+  networking.wireguard.interfaces = {
+    wg0 = {
+      ips = [ "10.11.0.1/12" ];
+      listenPort = 51820;
+      privateKeyFile = "/etc/nixos/secrets/legion-5/wireguard/private.key";
+
+      peers = [
+        {
+          publicKey = "r1kIoqXkQrcM+Ki0ZML91NORWnNcwEH99vnTFnTWIkM=";
+          allowedIPs = [ "10.10.0.1/32" ];
+          endpoint = "nasys.servers.stasaitis.me:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
   };
 }

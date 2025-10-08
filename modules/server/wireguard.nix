@@ -8,7 +8,7 @@
 
   networking.wireguard.interfaces = {
     wg0 = {
-      ips = [ "10.10.0.1/16" ];
+      ips = [ "10.10.0.1/12" ];
 
       listenPort = 51820;
 
@@ -23,15 +23,25 @@
      privateKeyFile = "/etc/nixos/secrets/nasys/wireguard/private.key";
 
       peers = [
+        # Legion-5
+        {
+          publicKey = "dEN7KtZqhkOw9jtmwMu7iDixYthcBZ0HqN+UILqNvFo=";
+          allowedIPs = [ "10.11.0.1/32" ];
+        }
         # S24U
         {
           publicKey = "yeAuEniGUGZMwGY/vlKYkFV40DF+qcyb2EEcejl62ng=";
-          allowedIPs = [ "10.10.0.2/32" ];
+          allowedIPs = [ "10.11.0.2/32" ];
         }
-        # Gunda PC
+        # # Aido laptopas
+        # {
+        #   publicKey = "";
+        #   allowedIPs = [ "10.12.0.1/32" ];
+        # }
+        # Gundos laptopas
         {
-          publicKey = "dEN7KtZqhkOw9jtmwMu7iDixYthcBZ0HqN+UILqNvFo=";
-          allowedIPs = [ "10.10.0.3/32" ];
+          publicKey = "3nIXAyfpg6eiQ4R37nmFzCer5PNh2XsePgvdHxKBoVw=";
+          allowedIPs = [ "10.12.1.1/32" ];
         }
       ];
     };

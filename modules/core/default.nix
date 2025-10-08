@@ -22,6 +22,7 @@
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
     };
+    nix.settings.trusted-users = mkIf cfg.adminUser.enable [ "admin" ];
 
     system.stateVersion = "25.05";
     networking.networkmanager.enable = true;

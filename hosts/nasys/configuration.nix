@@ -8,7 +8,6 @@ in
   ...
 }:
 {
-
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -28,10 +27,12 @@ in
     settings = {
       PasswordAuthentication = false;
       AllowUsers = [ "${username}" ];
+      # DenyUsers = [ "*@10.3.*.*" ]; # TODO: not robust enough.
       UseDns = true;
       X11Forwarding = false;
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
+    # services.openssh.extraConfig
   };
 
   users.users."${username}" = {
@@ -51,10 +52,10 @@ in
     # Ban IP after 5 failures
     maxretry = 5;
     ignoreIP = [
-      "10.0.0.0/8"
+      "10.11.0.0/16"
       "192.168.0.0/16"
     ];
-    bantime = "24h"; # Ban IPs for one day on the first ban
+    bantime = "1m";
     bantime-increment = {
       enable = true; # Enable increment of bantime after each violation
       multipliers = "1 2 4 8 16 32 64";
