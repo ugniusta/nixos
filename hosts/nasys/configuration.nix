@@ -20,6 +20,8 @@ in
   ];
 
   networking.hostName = "Nasys";
+  networking.useNetworkd = true;
+  systemd.network.enable = true;
 
   services.openssh = {
     enable = true;

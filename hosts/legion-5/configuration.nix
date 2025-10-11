@@ -11,7 +11,7 @@
 
   imports = [
     ./hardware-configuration.nix
-    "${flakeDir}/modules/core" 
+    "${flakeDir}/modules/core"
     "${flakeDir}/modules/nvidia"
     "${flakeDir}/modules/desktop"
     "${flakeDir}/modules/development"
@@ -30,6 +30,7 @@
   ];
 
   core.adminUser.enable = false;
+  networking.networkmanager.enable = true;
 
   environment.systemPackages = with pkgs; [
     lenovo-legion

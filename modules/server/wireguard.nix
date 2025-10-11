@@ -1,49 +1,47 @@
-{pkgs, ...}: {
-  networking.nat.enable = true;
-  networking.nat.externalInterface = "eth0";
-  networking.nat.internalInterfaces = [ "wg0" ];
+{ pkgs, ... }:
+{
   networking.firewall = {
     allowedUDPPorts = [ 51820 ];
   };
 
-  networking.wireguard.interfaces = {
-    wg0 = {
-      ips = [ "10.10.0.1/12" ];
-
-      listenPort = 51820;
-
-      # postSetup = ''
-      #   ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
-      # '';
-
-      # postShutdown = ''
-      #   ${pkgs.iptables}/bin/iptables -t nat -D POSTROUTING -s 10.100.0.0/24 -o eth0 -j MASQUERADE
-      # '';
-
-     privateKeyFile = "/etc/nixos/secrets/nasys/wireguard/private.key";
-
-      peers = [
+  systemd.network.netdevs = {
+    "50-wg0" = {
+      netdevConfig = {
+        Kind = "wireguard";
+        Name = "wg0";
+        MTUBytes = "1300";
+      };
+      wireguardConfig = {
+        PrivateKeyFile = "/etc/nixos/secrets/nasys/wireguard/private.key";
+        ListenPort = 51820;
+      };
+      wireguardPeers = [
         # Legion-5
         {
-          publicKey = "dEN7KtZqhkOw9jtmwMu7iDixYthcBZ0HqN+UILqNvFo=";
-          allowedIPs = [ "10.11.0.1/32" ];
+          PublicKey = "dEN7KtZqhkOw9jtmwMu7iDixYthcBZ0HqN+UILqNvFo=";
+          AllowedIPs = [ "10.11.0.1/32" ];
         }
         # S24U
         {
-          publicKey = "yeAuEniGUGZMwGY/vlKYkFV40DF+qcyb2EEcejl62ng=";
-          allowedIPs = [ "10.11.0.2/32" ];
+          PublicKey = "yeAuEniGUGZMwGY/vlKYkFV40DF+qcyb2EEcejl62ng=";
+          AllowedIPs = [ "10.11.0.2/32" ];
         }
-        # # Aido laptopas
-        # {
-        #   publicKey = "";
-        #   allowedIPs = [ "10.12.0.1/32" ];
-        # }
+        # Aido laptopas
+        {
+          PublicKey = "5GYWlehyKKyB8oKTsvE47guv/h4PQcgwzCpLHeQt8TE=";
+          AllowedIPs = [ "10.12.0.1/32" ];
+        }
         # Gundos laptopas
         {
-          publicKey = "3nIXAyfpg6eiQ4R37nmFzCer5PNh2XsePgvdHxKBoVw=";
-          allowedIPs = [ "10.12.1.1/32" ];
+          PublicKey = "3nIXAyfpg6eiQ4R37nmFzCer5PNh2XsePgvdHxKBoVw=";
+          AllowedIPs = [ "10.12.1.1/32" ];
         }
       ];
     };
+  };
+
+  systemd.network.networks."wg0" = {
+    matchConfig.Name = "wg0";
+    address = [ "10.10.0.1/12" ];
   };
 }

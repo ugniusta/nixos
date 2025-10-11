@@ -1,6 +1,13 @@
-let username = "linas";
+let
+  username = "linas";
 in
-{ config, flakeDir, pkgs, ... }: {
+{
+  config,
+  flakeDir,
+  pkgs,
+  ...
+}:
+{
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
@@ -12,6 +19,7 @@ in
   ];
 
   networking.hostName = "Linas";
+  networking.networkmanager.enable = true;
 
   services.openssh = {
     enable = true;
@@ -24,17 +32,17 @@ in
     };
   };
 
-  users.users."${username}"= {
-     isNormalUser = true;
-     description = "Linas Stašaitis";
-     extraGroups = [ "networkmanager" ];
-     packages = with pkgs; [
-       lutris
-       heroic
-       libreoffice-qt-fresh
-       git
-       vlc
-     ];
+  users.users."${username}" = {
+    isNormalUser = true;
+    description = "Linas Stašaitis";
+    extraGroups = [ "networkmanager" ];
+    packages = with pkgs; [
+      lutris
+      heroic
+      libreoffice-qt-fresh
+      git
+      vlc
+    ];
   };
 
   users.users.root = {
@@ -53,7 +61,12 @@ in
   # boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
   # boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" ];
   boot.initrd.kernelModules = [ "amdgpu" ];
-  boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
+  boot.kernelParams = [
+    "radeon.cik_support=0"
+    "radeon.si_support=0"
+    "amdgpu.cik_support=1"
+    "amdgpu.si_support=1"
+  ];
 
   # hardware.graphics.extraPackages = with pkgs; [ amdvlk ];
   # hardware.graphics.extraPackages32 = with pkgs; [ driversi686Linux.amdvlk ];
@@ -73,7 +86,7 @@ in
   services.xserver.enable = false;
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-  
+
   programs.nix-ld.enable = true;
 
 }
