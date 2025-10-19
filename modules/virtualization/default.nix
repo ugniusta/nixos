@@ -46,7 +46,6 @@ in {pkgs, lib, config, ...}: {
     users.groups.libvirtd.members = ["ugnius"];
     virtualisation.libvirtd = {
       enable = true;
-      qemu.ovmf.enable = true;
       qemu.swtpm.enable = true;
       qemu.verbatimConfig = ''
         cgroup_device_acl = [
