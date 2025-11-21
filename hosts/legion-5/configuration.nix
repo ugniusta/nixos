@@ -15,6 +15,7 @@
     "${flakeDir}/modules/nvidia"
     "${flakeDir}/modules/desktop"
     "${flakeDir}/modules/development"
+    "${flakeDir}/cachix.nix"
     "${flakeDir}/modules/virtualization"
 
     inputs.home-manager.nixosModules.home-manager
@@ -63,7 +64,7 @@
       peers = [
         {
           publicKey = "r1kIoqXkQrcM+Ki0ZML91NORWnNcwEH99vnTFnTWIkM=";
-          allowedIPs = [ "10.10.0.1/32" ];
+          allowedIPs = [ "10.10.0.1/32" "10.11.0.2/32"];
           endpoint = "nasys.servers.stasaitis.me:51820";
           persistentKeepalive = 25;
         }

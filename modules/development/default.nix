@@ -6,6 +6,7 @@
     rust-analyzer
     nixd
     nixfmt
+    uv
   ];
 
   hardware.saleae-logic.enable = true;

@@ -32,6 +32,11 @@
           PublicKey = "5GYWlehyKKyB8oKTsvE47guv/h4PQcgwzCpLHeQt8TE=";
           AllowedIPs = [ "10.12.0.1/32" ];
         }
+        # Aido S22U
+        {
+          PublicKey = "dFvGwCO/NjZVNdkHp096MO0Fz+HNwbdjPqZT1SMN/Vk=";
+          AllowedIPs = [ "10.12.0.2/32" ];
+        }
 
         # Gunda
         # Laptopas
@@ -56,5 +61,9 @@
   systemd.network.networks."wg0" = {
     matchConfig.Name = "wg0";
     address = [ "10.10.0.1/12" ];
+    networkConfig = {
+      # IPMasquerade = "ipv4";
+      IPv4Forwarding = true;
+    };
   };
 }

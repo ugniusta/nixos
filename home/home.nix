@@ -51,8 +51,12 @@
 
   programs.git = {
     enable = true;
-    userName = "ugniusta";
-    userEmail = "ugnius@dev.stasaitis.me";
+    settings = {
+      user = {
+        name = "ugniusta";
+        email = "programs.git.settings.user.name";
+      };
+    };
   };
 
   programs.starship = {

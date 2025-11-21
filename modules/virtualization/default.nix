@@ -15,9 +15,9 @@ in {pkgs, lib, config, ...}: {
         "nvidia_uvm"
         "nvidia_drm"
 
-        "vfio_pci"
-        "vfio"
-        "vfio_iommu_type1"
+        # "vfio_pci"
+        # "vfio"
+        # "vfio_iommu_type1"
 
         "kvmfr"
       ];
@@ -63,7 +63,7 @@ in {pkgs, lib, config, ...}: {
     environment.systemPackages = with pkgs; [
       virtio-win
       looking-glass-client
-      linuxKernel.packages.linux_6_16.kvmfr
+      linuxKernel.packages.linux_6_17.kvmfr
     ];
 
     fileSystems."/mnt/Win11VM" = {
