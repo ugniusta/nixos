@@ -6,6 +6,7 @@ end-of-line-diagnostics = "hint"
 gutters = ["diff", "diagnostics", "line-numbers", "spacer"] # Is this necessary?
 rulers = [80, 120]
 bufferline = "always"
+auto-pairs = false
 
 [editor.inline-diagnostics]
 cursor-line = "error"
