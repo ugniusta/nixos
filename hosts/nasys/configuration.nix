@@ -4,6 +4,7 @@ in
 {
   inputs,
   flakeDir,
+  config,
   pkgs,
   ...
 }:
@@ -64,5 +65,18 @@ in
       maxtime = "168h"; # Do not ban for more than 1 week
       overalljails = true; # Calculate the bantime based on all the violations
     };
+  };
+
+  services.hardware.openrgb.enable = true;
+  environment.systemPackages = with pkgs; [
+    openrgb
+  ];
+
+  hardware.nvidia = {
+    modesetting.enable = true;
+    powerManagement.enable = false;
+    powerManagement.finegrained = true;
+    open = true;
+    package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }

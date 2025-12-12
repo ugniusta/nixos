@@ -35,7 +35,11 @@
 
     signal-desktop-bin
     beeper
+
     libreoffice-qt6-fresh
+    zotero
+    zulu25
+
     vlc
     qbittorrent
     gimp
