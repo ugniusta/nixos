@@ -20,6 +20,7 @@ in
   config = {
     users.users.admin = mkIf cfg.adminUser.enable {
       isSystemUser = true;
+      group = "admin";
       description = "System administrator";
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
