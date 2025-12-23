@@ -1,4 +1,5 @@
 let
+  hostname = "Linas";
   username = "linas";
 in
 {
@@ -19,7 +20,7 @@ in
     "${flakeDir}/modules/desktop/gaming"
   ];
 
-  networking.hostName = "Linas";
+  networking.hostName = "${hostname}";
   networking.networkmanager.enable = true;
 
   services.openssh = {
@@ -45,12 +46,16 @@ in
     ];
   };
 
-  users.users.admin = {
-    openssh.authorizedKeys.keyFiles = [
-      "/etc/nixos/secrets/${username}/ssh/legion-5_admin@Linas.pub"
-      "/etc/nixos/secrets/${username}/ssh/s24u_admin@Linas.pub"
-    ];
-  };
+  users.users.admin =
+    let
+      hostname = builtins.toLower "${hostname}";
+    in
+    {
+      openssh.authorizedKeys.keyFiles = [
+        "/etc/nixos/secrets/${hostname}/ssh/legion-5_admin@Linas.pub"
+        "/etc/nixos/secrets/${hostname}/ssh/s24u_admin@Linas.pub"
+      ];
+    };
 
   hardware.graphics = {
     enable = true;
