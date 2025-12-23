@@ -63,20 +63,25 @@ in
     enable32Bit = true;
   };
 
-  # TODO: move out
-  # Wireguard network-manager
   networking.firewall = {
-    # if packets are still dropped, they will show up in dmesg
-    logReversePathDrops = true;
-    # wireguard trips rpfilter up
-    extraCommands = ''
-      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-    '';
-    extraStopCommands = ''
-      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-    '';
+    allowedUDPPorts = [ 51820 ];
+  };
+  networking.wireguard.interfaces = {
+    wg0 = {
+      ips = [ "10.13.0.1/12" ];
+      listenPort = 51820;
+      privateKeyFile = "/etc/nixos/secrets/linas/wireguard/private.key";
+
+      peers = [
+        {
+          publicKey = "r1kIoqXkQrcM+Ki0ZML91NORWnNcwEH99vnTFnTWIkM=";
+          # allowedIPs = [ "10.10.0.1/32" "10.11.0.1/32"];
+          allowedIPs = [ "10.11.0.1/32"];
+          endpoint = "nasys.servers.stasaitis.me:51820";
+          persistentKeepalive = 25;
+        }
+      ];
+    };
   };
 
   # boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
