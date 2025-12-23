@@ -32,6 +32,7 @@
 
   core.adminUser.enable = false;
   networking.networkmanager.enable = true;
+  programs.kdeconnect.enable = true;
 
   environment.systemPackages = with pkgs; [
     lenovo-legion

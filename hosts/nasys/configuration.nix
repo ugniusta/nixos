@@ -72,11 +72,13 @@ in
     openrgb
   ];
 
+  services.xserver.videoDrivers = ["nvidia"];
+
   hardware.nvidia = {
-    modesetting.enable = true;
-    powerManagement.enable = false;
-    powerManagement.finegrained = true;
-    open = true;
-    package = config.boot.kernelPackages.nvidiaPackages.stable;
+    modesetting.enable = false;
+    open = false;
+    powerManagement.enable = true;
+    nvidiaPersistenced = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }
