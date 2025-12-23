@@ -41,36 +41,37 @@ in
       lutris
       heroic
       libreoffice-qt-fresh
-      git
       vlc
     ];
   };
 
   users.users.admin = {
-  openssh.authorizedKeys.keyFiles = [
-    "/etc/nixos/secrets/${username}/ssh/legion-5_admin@Linas.pub"
-    "/etc/nixos/secrets/${username}/ssh/s24u_admin@Linas.pub"
-  ];
+    openssh.authorizedKeys.keyFiles = [
+      "/etc/nixos/secrets/${username}/ssh/legion-5_admin@Linas.pub"
+      "/etc/nixos/secrets/${username}/ssh/s24u_admin@Linas.pub"
+    ];
+  };
 
   hardware.graphics = {
     enable = true;
     enable32Bit = true;
   };
 
+  # TODO: move out
   # Wireguard network-manager
   networking.firewall = {
-     # if packets are still dropped, they will show up in dmesg
-     logReversePathDrops = true;
-     # wireguard trips rpfilter up
-     extraCommands = ''
-       ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
-       ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
-     '';
-     extraStopCommands = ''
-       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
-       ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
-     '';
-    };
+    # if packets are still dropped, they will show up in dmesg
+    logReversePathDrops = true;
+    # wireguard trips rpfilter up
+    extraCommands = ''
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN
+      ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN
+    '';
+    extraStopCommands = ''
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport 51820 -j RETURN || true
+      ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport 51820 -j RETURN || true
+    '';
+  };
 
   # boot.kernelParams = [ "radeon.cik_support=0" "radeon.si_support=0" "amdgpu.cik_support=1" "amdgpu.si_support=1" ];
   # boot.kernelParams = [ "radeon.si_support=0" "amdgpu.si_support=1" ];
