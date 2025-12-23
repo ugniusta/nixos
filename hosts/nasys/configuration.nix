@@ -1,6 +1,3 @@
-let
-  username = "nasys";
-in
 {
   inputs,
   flakeDir,
@@ -21,15 +18,15 @@ in
   ];
 
   networking.hostName = "Nasys";
-  networking.useNetworkd = true;
-  systemd.network.enable = true;
+  networking.useNetworkd = true; # TODO: redundant?
+  systemd.network.enable = true; # TODO: redundant?
 
   services.openssh = {
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = false;
-      AllowUsers = [ "${username}" ];
+      PasswordAuthentication = true; # TODO: change after
+      AllowUsers = [ "admin" ];
       # DenyUsers = [ "*@10.3.*.*" ]; # TODO: not robust enough.
       UseDns = true;
       X11Forwarding = false;
@@ -38,17 +35,12 @@ in
     # services.openssh.extraConfig
   };
 
-  users.users."${username}" = {
-    isNormalUser = true;
-    description = "Nas main user";
-    extraGroups = [ "wheel" ];
-    shell = pkgs.fish;
+  users.users.admin = {
     openssh.authorizedKeys.keyFiles = [
-      "/etc/nixos/secrets/${username}/ssh/legion-5_nasys@Nasys.pub"
-      "/etc/nixos/secrets/${username}/ssh/s24u_nasys@Nasys.pub"
+      "/etc/nixos/secrets/nasys/ssh/legion-5_admin@Nasys.pub"
+      "/etc/nixos/secrets/nasys/ssh/s24u_admin@Nasys.pub"
     ];
   };
-  nix.settings.trusted-users = [ "${username}" ];
 
   services.fail2ban = {
     enable = true;
@@ -67,18 +59,11 @@ in
     };
   };
 
-  services.hardware.openrgb.enable = true;
-  environment.systemPackages = with pkgs; [
-    openrgb
-  ];
-
   services.xserver.videoDrivers = ["nvidia"];
-
   hardware.nvidia = {
     modesetting.enable = false;
     open = false;
     powerManagement.enable = true;
     nvidiaPersistenced = true;
-    # package = config.boot.kernelPackages.nvidiaPackages.stable;
   };
 }

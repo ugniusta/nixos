@@ -16,6 +16,7 @@
         ListenPort = 51820;
       };
       wireguardPeers = [
+        # 1
         # Legion-5
         {
           PublicKey = "dEN7KtZqhkOw9jtmwMu7iDixYthcBZ0HqN+UILqNvFo=";
@@ -27,6 +28,7 @@
           AllowedIPs = [ "10.11.0.2/32" ];
         }
 
+        # 2
         # Aido laptopas
         {
           PublicKey = "5GYWlehyKKyB8oKTsvE47guv/h4PQcgwzCpLHeQt8TE=";
@@ -45,14 +47,22 @@
           AllowedIPs = [ "10.12.1.1/32" ];
         }
         # Flip 5
-        {
-          PublicKey = "BBRKOv97SxvDsl205x4ubNhBhx53B+k2iwfwhKiatwY=";
-          AllowedIPs = [ "10.12.1.2/32" ];
-        }
+        # {
+        #   PublicKey = "BBRKOv97SxvDsl205x4ubNhBhx53B+k2iwfwhKiatwY=";
+        #   AllowedIPs = [ "10.12.1.2/32" ];
+        # }
         # Oneplus
+        # {
+        #   PublicKey = "lIzWi79zxl/lNsLUI3sG5jDAAt7calY7DSF59o+lonE=";
+        #   AllowedIPs = [ "10.12.1.3/32" ];
+        # }
+        
+        # 3
+        # Linas
+        # Palėpė
         {
-          PublicKey = "lIzWi79zxl/lNsLUI3sG5jDAAt7calY7DSF59o+lonE=";
-          AllowedIPs = [ "10.12.1.3/32" ];
+          PublicKey = "7nnEafjMThY49aaDsFXILjOo/m/CSe1F3BTx0qxFbkY=";
+          AllowedIPs = [ "10.13.0.1/32" ];
         }
       ];
     };

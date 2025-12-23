@@ -19,12 +19,14 @@ in
 
   config = {
     users.users.admin = mkIf cfg.adminUser.enable {
-      isNormalUser = true;
+      isSystemUser = true;
       description = "System administrator";
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
     };
     nix.settings.trusted-users = mkIf cfg.adminUser.enable [ "admin" ];
+  };
+
 
     system.stateVersion = "25.05";
 

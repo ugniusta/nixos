@@ -29,7 +29,7 @@ in
       PasswordAuthentication = false;
       UseDns = true;
       X11Forwarding = false;
-      PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+      PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
   };
 
@@ -46,13 +46,11 @@ in
     ];
   };
 
-  users.users.root = {
-    isSystemUser = true;
-    openssh.authorizedKeys.keyFiles = [
-      "/etc/nixos/secrets/${username}/ssh/legion-5_root@Linas.pub"
-      "/etc/nixos/secrets/${username}/ssh/s24u_root@Linas.pub"
-    ];
-  };
+  users.users.admin = {
+  openssh.authorizedKeys.keyFiles = [
+    "/etc/nixos/secrets/${username}/ssh/legion-5_admin@Linas.pub"
+    "/etc/nixos/secrets/${username}/ssh/s24u_admin@Linas.pub"
+  ];
 
   hardware.graphics = {
     enable = true;
