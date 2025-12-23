@@ -6,6 +6,7 @@ in
   config,
   flakeDir,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -48,7 +49,7 @@ in
 
   users.users.admin =
     let
-      hostname = builtins.toLower "${hostname}";
+      hostname = lib.strings.toLower "${hostname}";
     in
     {
       openssh.authorizedKeys.keyFiles = [
