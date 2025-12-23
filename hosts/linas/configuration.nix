@@ -49,12 +49,12 @@ in
 
   users.users.admin =
     let
-      hostname = lib.strings.toLower "${hostname}";
+      machine = lib.strings.toLower "${hostname}";
     in
     {
       openssh.authorizedKeys.keyFiles = [
-        "/etc/nixos/secrets/${hostname}/ssh/legion-5_admin@Linas.pub"
-        "/etc/nixos/secrets/${hostname}/ssh/s24u_admin@Linas.pub"
+        "/etc/nixos/secrets/${machine}/ssh/legion-5_admin@Linas.pub"
+        "/etc/nixos/secrets/${machine}/ssh/s24u_admin@Linas.pub"
       ];
     };
 
