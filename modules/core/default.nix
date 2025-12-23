@@ -25,6 +25,7 @@ in
       extraGroups = [ "wheel" ];
       shell = pkgs.fish;
     };
+    users.groups.admin = mkIf cfg.adminUser.enable {};
     nix.settings.trusted-users = mkIf cfg.adminUser.enable [ "admin" ];
 
 
