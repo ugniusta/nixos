@@ -25,7 +25,7 @@
     enable = true;
     ports = [ 22 ];
     settings = {
-      PasswordAuthentication = true; # TODO: change after
+      PasswordAuthentication = false;
       AllowUsers = [ "admin" ];
       # DenyUsers = [ "*@10.3.*.*" ]; # TODO: not robust enough.
       UseDns = true;
