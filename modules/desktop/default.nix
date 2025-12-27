@@ -1,11 +1,15 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, ... }:
+{
   imports = [
     ./gaming
     ./3D
   ];
 
   services.printing.enable = true;
-  services.printing.drivers = with pkgs; [ foo2zjs ];
+  services.printing.drivers = with pkgs; [
+    foo2zjs
+    gutenprint
+  ];
 
   hardware.bluetooth.enable = true;
   security.rtkit.enable = true;

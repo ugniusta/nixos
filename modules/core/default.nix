@@ -28,7 +28,6 @@ in
     users.groups.admin = mkIf cfg.adminUser.enable {};
     nix.settings.trusted-users = mkIf cfg.adminUser.enable [ "admin" ];
 
-
     system.stateVersion = "25.05";
 
     time.timeZone = "Europe/Vilnius";

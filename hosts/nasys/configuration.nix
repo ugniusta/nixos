@@ -15,6 +15,7 @@
     "${flakeDir}/modules/server/zfs.nix"
     "${flakeDir}/modules/server/wireguard.nix"
     "${flakeDir}/modules/server/samba.nix"
+    "${flakeDir}/modules/server/immich.nix"
   ];
 
   networking.hostName = "Nasys";

@@ -1,10 +1,15 @@
-{ inputs,  pkgs, ... }: {
+{
+  inputs,
+  pkgs,
+  ...
+}:
+{
   home.username = "ugnius";
   home.homeDirectory = "/home/ugnius";
 
   home.packages = with pkgs; [
     starsector
-    
+
     ghostty
     nushell
     helix
@@ -46,8 +51,8 @@
     drawio
     obs-studio
 
-    inputs.zen-browser.packages.${system}.beta
-    wireguard-tools 
+    inputs.zen-browser.packages.${stdenv.hostPlatform.system}.beta
+    wireguard-tools
 
     bazecor
     anki-bin
