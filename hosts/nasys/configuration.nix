@@ -12,15 +12,18 @@
   imports = [
     "${flakeDir}/hosts/nasys/hardware-configuration.nix"
     "${flakeDir}/modules/core"
+    "${flakeDir}/cachix.nix"
     "${flakeDir}/modules/server/zfs.nix"
     "${flakeDir}/modules/server/wireguard.nix"
     "${flakeDir}/modules/server/samba.nix"
     "${flakeDir}/modules/server/immich.nix"
+    "${flakeDir}/modules/server/podman.nix"
   ];
 
   networking.hostName = "Nasys";
   networking.useNetworkd = true; # TODO: redundant?
   systemd.network.enable = true; # TODO: redundant?
+  networking.nftables.enable = true;
 
   services.openssh = {
     enable = true;
@@ -63,8 +66,10 @@
   services.xserver.videoDrivers = ["nvidia"];
   hardware.nvidia = {
     modesetting.enable = false;
+    nvidiaPersistenced = false;
     open = false;
     powerManagement.enable = true;
-    nvidiaPersistenced = true;
   };
+
+  # nixpkgs.config.cudaSupport = true;
 }

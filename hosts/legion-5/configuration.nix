@@ -12,10 +12,10 @@
   imports = [
     ./hardware-configuration.nix
     "${flakeDir}/modules/core"
+    "${flakeDir}/cachix.nix"
     "${flakeDir}/modules/nvidia"
     "${flakeDir}/modules/desktop"
     "${flakeDir}/modules/development"
-    "${flakeDir}/cachix.nix"
     "${flakeDir}/modules/virtualization"
 
     inputs.home-manager.nixosModules.home-manager

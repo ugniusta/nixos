@@ -2,16 +2,19 @@
   users.groups."smbgroup" = {};
   
   users.users."ugnius" = {
-    isSystemUser = true;
+    isNormalUser = true;
     group = "smbgroup";
+    home = "/mnt/nas/shares/private/ugnius";
   };
   users.users."gunda" = {
-    isSystemUser = true;
+    isNormalUser = true;
     group = "smbgroup";
+    home = "/mnt/nas/shares/private/gunda";
   };
   users.users."aidas" = {
-    isSystemUser = true;
+    isNormalUser = true;
     group = "smbgroup";
+    home = "/mnt/nas/shares/private/aidas";
   };
 
   services.samba = {

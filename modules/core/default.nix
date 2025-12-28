@@ -19,7 +19,7 @@ in
 
   config = {
     users.users.admin = mkIf cfg.adminUser.enable {
-      isSystemUser = true;
+      isNormalUser = true;
       group = "admin";
       description = "System administrator";
       extraGroups = [ "wheel" ];
