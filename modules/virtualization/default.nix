@@ -63,7 +63,7 @@ in {pkgs, lib, config, ...}: {
     environment.systemPackages = with pkgs; [
       virtio-win
       looking-glass-client
-      linuxKernel.packages.linux_6_17.kvmfr
+      linuxKernel.packages.linux_6_12.kvmfr
     ];
 
     fileSystems."/mnt/Win11VM" = {

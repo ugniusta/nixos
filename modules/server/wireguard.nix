@@ -51,12 +51,12 @@
         #   PublicKey = "BBRKOv97SxvDsl205x4ubNhBhx53B+k2iwfwhKiatwY=";
         #   AllowedIPs = [ "10.12.1.2/32" ];
         # }
-        # Oneplus
-        # {
-        #   PublicKey = "lIzWi79zxl/lNsLUI3sG5jDAAt7calY7DSF59o+lonE=";
-        #   AllowedIPs = [ "10.12.1.3/32" ];
-        # }
-        
+        # 
+        {
+          PublicKey = "QbEUEaY7i33v0oNlE6c5sz4ZkhtyIoqnD6dzShrCfBg=";
+          AllowedIPs = [ "10.12.1.3/32" ];
+        }
+
         # 3
         # Linas
         # Palėpė

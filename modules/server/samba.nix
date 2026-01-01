@@ -26,6 +26,9 @@
         "server string" = "Nasys";
         "netbios name" = "Nasys";
         "security" = "user";
+        "vfs objects" = "acl_xattr";
+        "map acl inherit" = "yes";
+        "store dos attributes" = "yes";
         # "use sendfile" = "yes";
         # "max protocol" = "smb2";
         # note: localhost is the ipv6 localhost ::1
@@ -49,8 +52,8 @@
         "path" = "/mnt/nas/shares/private";
         "read only" = "no";
         # "force group" = "smbgroup";
-        "create mask" = "0600";
-        "directory mask" = "0700";
+        "create mask" = "0660";
+        "directory mask" = "0770";
         "hide unreadable" = "yes";
         "browsable" = "yes";
       };
