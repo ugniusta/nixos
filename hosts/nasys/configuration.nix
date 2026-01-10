@@ -2,6 +2,7 @@
   flakeDir,
   config,
   pkgs,
+  lib,
   ...
 }:
 {
@@ -65,10 +66,16 @@
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia = {
     modesetting.enable = false;
-    nvidiaPersistenced = false;
+    nvidiaPersistenced = true;
     open = false;
     powerManagement.enable = true;
+    # package = config.boot.kernelPackages.nvidiaPackages.mkDriver {
+    #   version = "570.207";
+    #   sha256_64bit = "sha256-LWvSWZeWYjdItXuPkXBmh/i5uMvh4HeyGmPsLGWJfOI=";
+    #   # sha256_aarch64 = "sha256-xctt4TPRlOJ6r5S54h5W6PT6/3Zy2R4ASNFPu8TSHKM=";
+    #   openSha256 = "sha256-ZpuVZybW6CFN/gz9rx+UJvQ715FZnAOYfHn5jt5Z2C8=";
+    #   settingsSha256 = "sha256-khyOoXAp9FY4Yf6//dwnqxCqQQjWe2OESrNIoJAe0go=";
+    #   persistencedSha256 = "sha256-rtMLWpZ7s0kPUmz5xWHg6za0IjLgWauRyajkLZolj2A=";
+    # };
   };
-
-  # nixpkgs.config.cudaSupport = true;
 }

@@ -26,7 +26,11 @@
     hyperfine
     mprocs
     btop
-    zoxide
+    wget
+    rpi-imager
+    mediawriter
+    unixtools.arp
+    unixtools.column
 
     cowsay
 
