@@ -16,6 +16,7 @@
     vscodium
     saleae-logic-2
     zoxide
+    comma
 
     bat
     zellij

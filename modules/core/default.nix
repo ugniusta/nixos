@@ -33,6 +33,14 @@ in
     time.timeZone = "Europe/Vilnius";
 
     i18n.defaultLocale = "en_US.UTF-8";
+    i18n.extraLocaleSettings = {
+      LC_NUMERIC = "lt_LT.UTF-8";
+      LC_TIME = "lt_LT.UTF-8";
+      LC_MONETARY = "lt_LT.UTF-8";
+      LC_PAPER = "lt_LT.UTF-8";
+      LC_ADDRESS = "lt_LT.UTF-8";
+      LC_MEASUREMENT = "lt_LT.UTF-8";
+    };
 
     services.xserver.xkb = {
       layout = "lt";
@@ -49,6 +57,7 @@ in
     nix.settings.experimental-features = [
       "nix-command"
       "flakes"
+      "recursive-nix"
     ];
   };
 }
