@@ -47,7 +47,6 @@ in
       onlyoffice-desktopeditors
       wine-wayland
       winetricks
-      winboat
     ];
   };
 
