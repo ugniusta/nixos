@@ -32,7 +32,7 @@
           ];
         };
 
-        Nasys = inputs.nixpkgs-stable.lib.nixosSystem {
+        Nasys = nixpkgs-stable.lib.nixosSystem {
           specialArgs = {
             inherit inputs flakeDir;
           };

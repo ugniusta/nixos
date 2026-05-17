@@ -4,3 +4,4 @@ window-decoration = none
 app-notifications = no-clipboard-copy
 shell-integration = none
 command = zellij
+mouse-scroll-multiplier = 0.5

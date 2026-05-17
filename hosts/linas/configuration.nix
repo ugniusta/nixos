@@ -44,6 +44,10 @@ in
       heroic
       libreoffice-qt-fresh
       vlc
+      onlyoffice-desktopeditors
+      wine-wayland
+      winetricks
+      winboat
     ];
   };
 

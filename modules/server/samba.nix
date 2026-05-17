@@ -16,6 +16,11 @@
     group = "smbgroup";
     home = "/mnt/nas/shares/private/aidas";
   };
+  users.users."lina" = {
+    isNormalUser = true;
+    group = "smbgroup";
+    home = "/mnt/nas/shares/private/lina";
+  };
 
   services.samba = {
     enable = true;
@@ -57,22 +62,6 @@
         "hide unreadable" = "yes";
         "browsable" = "yes";
       };
-      # "Aidas" = {
-      #   "path" = "/mnt/nas/aidas";
-      #   "read only" = "no";
-      #   "create mask" = "0600";
-      #   "directory mask" = "0700";
-      #   "hide unreadable" = "yes";
-      #   "browsable" = "no";
-      # };
-      # "Gunda" = {
-      #   "path" = "/mnt/nas/gunda";
-      #   "read only" = "no";
-      #   "create mask" = "0600";
-      #   "directory mask" = "0700";
-      #   "hide unreadable" = "yes";
-      #   "browsable" = "no";
-      # };
     };
   };
 

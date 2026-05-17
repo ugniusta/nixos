@@ -43,7 +43,7 @@
     usbutils
     remmina
 
-    signal-desktop-bin
+    signal-desktop
     beeper
 
     libreoffice-qt6-fresh

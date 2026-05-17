@@ -8,6 +8,6 @@
 
   environment.systemPackages = with pkgs; [
     gamemode
-    lutris
+    # lutris
   ];
 }

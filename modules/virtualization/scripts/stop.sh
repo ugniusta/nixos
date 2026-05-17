@@ -1,5 +1,5 @@
 #!/bin/sh
-VM_NAME=Windows11
+VM_NAME=win11
 
 sudo virsh shutdown "$VM_NAME"
 while true; do
