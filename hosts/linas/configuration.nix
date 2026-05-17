@@ -47,6 +47,7 @@ in
       onlyoffice-desktopeditors
       wine-wayland
       winetricks
+      audacity
     ];
   };
 
