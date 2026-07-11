@@ -82,8 +82,17 @@
     };
   };
 
+  services.openssh = {
+    enable = true;
+    settings = {
+      # AllowUsers = "guest";
+      PasswordAuthentication = false;
+    };
+  };
+
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
+  # hardware.nvidia-container-toolkit.enable = true;
   virtualisation = {
     podman = {
       enable = true;

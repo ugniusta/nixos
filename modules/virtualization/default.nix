@@ -19,13 +19,13 @@ in {pkgs, lib, config, ...}: {
         # "vfio"
         # "vfio_iommu_type1"
 
-        "kvmfr"
+        # "kvmfr"
       ];
 
-      kernelParams = [
-      "intel_iommu=on"
-      ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
-      ];
+      # kernelParams = [
+      # "intel_iommu=on"
+      # ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      # ];
 
       extraModprobeConfig = ''
         options kvmfr static_size_mb=64
@@ -61,6 +61,9 @@ in {pkgs, lib, config, ...}: {
     virtualisation.libvirtd.allowedBridges = ["virbr0"];
 
     environment.systemPackages = with pkgs; [
+      guestfs-tools
+      virtiofsd
+
       virtio-win
       looking-glass-client
       linuxKernel.packages.linux_6_12.kvmfr

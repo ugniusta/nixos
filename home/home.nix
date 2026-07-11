@@ -13,6 +13,7 @@
     ghostty
     nushell
     helix
+    neovim
     vscodium
     saleae-logic-2
     zoxide
