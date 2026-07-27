@@ -31,6 +31,10 @@
   ];
 
   core.adminUser.enable = false;
+  specialisation.vfio.configuration = {
+    vfio.enable = true;
+  };
+
   networking.networkmanager.enable = true;
   programs.kdeconnect.enable = true;
 

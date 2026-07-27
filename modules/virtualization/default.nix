@@ -1,38 +1,55 @@
-let gpuIDs = [
-  # RTX 3070M
-  "10de:24dd" # Video
-  "10de:228b"  # Audio
-];
-in {pkgs, lib, config, ...}: {
+let
+  gpuIDs = [
+    # RTX 3070M
+    "10de:24dd" # Video
+    "10de:228b" # Audio
+  ];
+in
+{ pkgs, lib, config, ... }:
+let
+  cfg = config.vfio;
+in
+{
+  options.vfio.enable = lib.mkEnableOption "VFIO GPU passthrough boot profile";
 
-  config = let cfg = config.vfio;
-  in {
+  config = {
     boot = {
-      extraModulePackages = with config.boot.kernelPackages; [ kvmfr ];
-      kernelModules = [
+      extraModulePackages = lib.optionals cfg.enable (
+        with config.boot.kernelPackages; [ kvmfr ]
+      );
+
+      initrd.kernelModules = lib.optionals cfg.enable [
+        "vfio_pci"
+        "vfio"
+        "vfio_iommu_type1"
+      ];
+
+      kernelModules = lib.optionals (!cfg.enable) [
         "nvidia"
         "nvidia_modeset"
         "nvidia_uvm"
         "nvidia_drm"
-
-        # "vfio_pci"
-        # "vfio"
-        # "vfio_iommu_type1"
-
-        # "kvmfr"
       ];
 
-      # kernelParams = [
-      # "intel_iommu=on"
-      # ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
-      # ];
+      kernelParams = lib.optionals cfg.enable [
+        "intel_iommu=on"
+        ("vfio-pci.ids=" + lib.concatStringsSep "," gpuIDs)
+      ];
+
+      blacklistedKernelModules = lib.optionals cfg.enable [
+        "nouveau"
+        "nvidia"
+        "nvidia_drm"
+        "nvidia_modeset"
+        "nvidia_uvm"
+      ];
 
       extraModprobeConfig = ''
         options kvmfr static_size_mb=64
       '';
     };
 
-    systemd.services.kvmfrPermissions = {
+    systemd.services.kvmfrPermissions = lib.mkIf cfg.enable {
       enable = true;
       wantedBy = ["default.target"];
       wants = ["modprobe@kvmfr.service"];
@@ -65,9 +82,10 @@ in {pkgs, lib, config, ...}: {
       virtiofsd
 
       virtio-win
+    ] ++ lib.optionals cfg.enable (with pkgs; [
       looking-glass-client
       linuxKernel.packages.linux_6_12.kvmfr
-    ];
+    ]);
 
     fileSystems."/mnt/Win11VM" = {
       device = "/dev/disk/by-uuid/a09b771f-8f8c-487f-922f-2bf85a95374e";
