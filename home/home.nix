@@ -14,6 +14,7 @@
     nushell
     helix
     neovim
+    opencode
     vscodium
     saleae-logic-2
     zoxide
@@ -57,7 +58,7 @@
     drawio
     obs-studio
 
-    inputs.zen-browser.packages.${stdenv.hostPlatform.system}.beta
+    inputs.zen-browser.packages.${stdenv.hostPlatform.system}.default
     wireguard-tools
 
     bazecor

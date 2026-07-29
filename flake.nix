@@ -10,7 +10,7 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     zen-browser = {
-      url = "github:NikSneMC/zen-browser-flake";
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };

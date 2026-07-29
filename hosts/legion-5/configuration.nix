@@ -38,6 +38,8 @@
   networking.networkmanager.enable = true;
   programs.kdeconnect.enable = true;
 
+  systemd.user.settings.Manager.DefaultTimeoutStopSec = "30s";
+
   environment.systemPackages = with pkgs; [
     lenovo-legion
 
@@ -78,9 +80,11 @@
             "10.10.0.1/32"
             "10.11.0.2/32"
             "10.13.0.1/32"
-          ];
-          endpoint = "nasys.servers.stasaitis.me:51820";
-          persistentKeepalive = 25;
+           ];
+           endpoint = "nasys.servers.stasaitis.me:51820";
+           dynamicEndpointRefreshSeconds = 300;
+           dynamicEndpointRefreshRestartSeconds = 5;
+           persistentKeepalive = 25;
         }
       ];
     };
