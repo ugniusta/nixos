@@ -16,6 +16,7 @@
     "${flakeDir}/modules/server/zfs.nix"
     "${flakeDir}/modules/server/wireguard.nix"
     "${flakeDir}/modules/server/samba.nix"
+    "${flakeDir}/modules/server/syncthing.nix"
     "${flakeDir}/modules/server/immich.nix"
     "${flakeDir}/modules/server/podman.nix"
   ];
@@ -37,6 +38,17 @@
       PermitRootLogin = "no"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
     };
     # services.openssh.extraConfig
+  };
+
+  services.zfs.autoSnapshot = {
+    enable = true;
+    flags = "-k -p --utc";
+
+    frequent = 4;
+    hourly = 24;
+    daily = 7;
+    weekly = 4;
+    monthly = 12;
   };
 
   users.users.admin = {

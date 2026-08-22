@@ -5,21 +5,25 @@
     isNormalUser = true;
     group = "smbgroup";
     home = "/mnt/nas/shares/private/ugnius";
+    createHome = false;
   };
   users.users."gunda" = {
     isNormalUser = true;
     group = "smbgroup";
     home = "/mnt/nas/shares/private/gunda";
+    createHome = false;
   };
   users.users."aidas" = {
     isNormalUser = true;
     group = "smbgroup";
     home = "/mnt/nas/shares/private/aidas";
+    createHome = false;
   };
   users.users."lina" = {
     isNormalUser = true;
     group = "smbgroup";
     home = "/mnt/nas/shares/private/lina";
+    createHome = false;
   };
 
   services.samba = {

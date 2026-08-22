@@ -15,10 +15,11 @@
     helix
     neovim
     opencode
-    vscodium
+    vscode
     saleae-logic-2
     zoxide
     comma
+    python3
 
     bat
     zellij
@@ -50,7 +51,9 @@
 
     libreoffice-qt6-fresh
     zotero
+    obsidian
     zulu25
+    wireshark
 
     vlc
     qbittorrent

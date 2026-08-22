@@ -54,6 +54,16 @@
 
   networking.hostName = "Legion-5";
 
+  services.syncthing = {
+    enable = true;
+    user = "syncthing";
+    group = "syncthing";
+    dataDir = "/var/lib/syncthing";
+    configDir = "/var/lib/syncthing/.config/syncthing";
+    guiAddress = "127.0.0.1:8384";
+    openDefaultPorts = true;
+  };
+
   users.users.ugnius = {
     isNormalUser = true;
     description = "Ugnius Stašaitis";
